@@ -86,16 +86,16 @@ data/
 
 ### 单卡训练
 ```bash
-python tools/train.py configs/deformable/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py
+python tools/train.py configs/deformable/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py
 ```
 
 ### 多卡训练 (推荐)
 ```bash
 # Linux / WSL
-bash tools/dist_train.sh configs/deformable/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py 4
+bash tools/dist_train.sh configs/deformable/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py 4
 
 # Windows (PowerShell)
-python -m torch.distributed.run --nproc_per_node=4 tools/train.py configs/deformable/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py
+python -m torch.distributed.run --nproc_per_node=4 tools/train.py configs/deformable/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py
 ```
 
 **常用参数：**
@@ -110,13 +110,13 @@ python -m torch.distributed.run --nproc_per_node=4 tools/train.py configs/deform
 
 ### 官方指标评估
 ```bash
-python tools/test.py configs/deformable/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py work_dirs/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10/latest.pth
+python tools/test.py configs/deformable/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py work_dirs/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10/latest.pth
 ```
 默认输出 COCO 格式 `bbox mAP`。若配置文件启用了旋转框评估（`metric='dota'`），请确保已安装 `dota-devkit` 或按官方说明配置评估器。
 
 ### 单图推理可视化
 ```bash
-python demo/image_demo.py demo/demo.jpg configs/deformable/deformable_1_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py work_dirs/.../latest.pth --score-thr 0.5
+python demo/image_demo.py demo/demo.jpg configs/deformable/deformable_faster_rcnn_orpn_r50_fpn_1x_ms_rr_dota10.py work_dirs/.../latest.pth --score-thr 0.5
 ```
 
 > ⚠️ **注意事项**
