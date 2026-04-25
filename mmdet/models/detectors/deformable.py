@@ -31,16 +31,13 @@ class Conv3DensityGroup(nn.Module):
 
     def forward(self, x):
         x = F.interpolate(x, size=(256, 256), mode='bilinear', align_corners=False)
-        xs = self.conv1(x)
-        x1 = self.GroupNorm1(xs)
-        xs = self.act(x1)
-        xs = self.conv2(xs)
-        xs = self.GroupNorm2(xs)
-        xs = self.act(xs)
-        xs = self.conv3(xs)
-        xs = self.GroupNorm3(xs)
-        xs = self.act(xs)
-        xs = self.conv4(xs)
+        x = self.conv1(x)
+        x = self.act(self.GroupNorm1(x))
+        x = self.conv2(x)
+        x = self.act(self.GroupNorm2(x))
+        x = self.conv3(x)
+        x = self.act(self.GroupNorm3(x))
+        x = self.conv4(x)
         return xs
 
 
