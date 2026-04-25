@@ -99,7 +99,10 @@ class DeformSampler(nn.Module):
             grid_o = nn.Upsample(size=(h, w), mode='bilinear')(grid_o)
             grid_o = grid_o.permute(0, 2, 3, 1)
         grid_l = grid.permute(0, 2, 3, 1)
-        grid_r = (98 * grid_o + 2 * grid_l) / 100
+        # grid_r = (98 * grid_o + 2 * grid_l) / 100
+        # better but not stable
+        grid_r = (99 * grid_o + 1 * grid_l) / 100
+        # stable but not better
         return grid_r, grid
 
     def forward(self, x, xs):
